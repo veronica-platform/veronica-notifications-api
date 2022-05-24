@@ -26,6 +26,7 @@ dependencies {
 	implementation("com.squareup.okhttp3:logging-interceptor:3.10.0")
 	implementation("javax.validation:validation-api:2.0.1.Final")
 	implementation("org.hibernate.validator:hibernate-validator:6.0.17.Final")
+	implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.1")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 }
 

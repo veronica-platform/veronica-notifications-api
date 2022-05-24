@@ -19,7 +19,7 @@ class RetrofitConfig(
 ) {
 
     @Bean
-    @Qualifier("retrofit")
+    @Qualifier("slackRetrofit")
     fun retrofit(): Retrofit {
         val objectMapper = ObjectMapper()
         objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false)
