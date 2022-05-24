@@ -18,7 +18,7 @@ class SlackNotificationController(
 ) {
 
     @PostMapping
-    fun save(@Valid @RequestBody slackNotificationDto: SlackNotificationDto) {
+    fun send(@Valid @RequestBody slackNotificationDto: SlackNotificationDto) {
         CoroutineScope(Dispatchers.IO).launch {
             slackNotificationService.sendSlackMessage(slackNotificationDto)
         }
