@@ -5,15 +5,15 @@ import okhttp3.ResponseBody
 import org.springframework.stereotype.Repository
 import retrofit2.Call
 import retrofit2.http.Body
+import retrofit2.http.Header
 import retrofit2.http.POST
-import retrofit2.http.Path
 
 @Repository
 interface HttpClientDefinition {
 
-    @POST("{slack-api-key}")
+    @POST(value = "chat.postMessage")
     fun sendSlackMessage(
-        @Path("slack-api-key") slackApiKey: String,
+        @Header("Authorization") slackApiKey: String,
         @Body payload: SlackNotificationDto
     ): Call<ResponseBody>
 

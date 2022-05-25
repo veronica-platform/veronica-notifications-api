@@ -5,6 +5,7 @@ import javax.validation.constraints.NotEmpty
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 data class SlackNotificationDto(
+    @get:NotEmpty val channel: String,
     @get:NotEmpty val blocks: List<Block>
 )
 

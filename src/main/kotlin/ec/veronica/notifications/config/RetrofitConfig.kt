@@ -14,7 +14,7 @@ import retrofit2.converter.jackson.JacksonConverterFactory
 
 @Configuration
 class RetrofitConfig(
-    @Value("\${slack.webhook.url}")
+    @Value("\${slack.api.url}")
     private val slackWebhookUrl: String
 ) {
 
