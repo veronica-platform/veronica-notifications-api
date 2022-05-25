@@ -13,7 +13,7 @@ data class SlackNotificationDto(
 data class Block(
     @get:NotEmpty val type: String,
     @get:NotEmpty val block_id: String? = null,
-    @get:NotEmpty val text: Text,
+    @get:NotEmpty val text: Text? = null,
     @get:NotEmpty val fields: List<Field>? = null,
 )
 
