@@ -18,7 +18,7 @@ class SlackNotificationService(
     private val slackApiToken: String
 ) {
 
-    fun sendSlackMessage(slackNotificationDto: SlackNotificationDto) {
+    fun sendMessage(slackNotificationDto: SlackNotificationDto) {
         val response: Response<ResponseBody> = slackRetrofit
             .create(HttpClientDefinition::class.java)
             .sendSlackMessage("Bearer $slackApiToken", slackNotificationDto)

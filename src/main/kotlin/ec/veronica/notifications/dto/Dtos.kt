@@ -28,3 +28,18 @@ data class Field(
     @get:NotEmpty val type: String,
     @get:NotEmpty val text: String,
 )
+
+@JsonInclude(JsonInclude.Include.NON_NULL)
+data class EmailNotificationDto(
+    val content: String,
+    val subject: String,
+    val tos: List<String>,
+    val attachments: List<AttachmentDto>
+)
+
+data class AttachmentDto(
+    val content: String,
+    val contentId: String,
+    val filename: String,
+    val type: String,
+)
