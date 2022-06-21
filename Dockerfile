@@ -1,6 +1,6 @@
-FROM openjdk:8-jdk
+FROM openjdk:11
 MAINTAINER Rolando Rodríguez
 VOLUME /tmp
 ARG JAR_FILE
-COPY target/${JAR_FILE} /tmp/veronica-notifications-api.jar
-ENTRYPOINT [ "java", "-Djava.security.egd=file:/dev/./urandom", "-jar", "/tmp/veronica-notifications-api.jar"]
+COPY ${JAR_FILE} /tmp/app.jar
+ENTRYPOINT [ "java", "-Djava.security.egd=file:/dev/./urandom", "-jar", "/tmp/app.jar"]
