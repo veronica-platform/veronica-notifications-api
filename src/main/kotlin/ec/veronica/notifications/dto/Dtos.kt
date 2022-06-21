@@ -31,6 +31,7 @@ data class Field(
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 data class EmailNotificationDto(
+    val supplierName: String,
     val content: String,
     val subject: String,
     val tos: List<String>,

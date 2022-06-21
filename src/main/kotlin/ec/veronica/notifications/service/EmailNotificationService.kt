@@ -26,7 +26,7 @@ class EmailNotificationService(
 
     fun sendMessage(request: EmailNotificationDto) {
         val mail = Mail()
-        mail.from = Email(noReplyEmailAddress)
+        mail.from = Email(noReplyEmailAddress, request.supplierName)
         mail.subject = request.subject
         mail.addContent(Content("text/html", request.content))
         mail.addReceivers(request.tos)
