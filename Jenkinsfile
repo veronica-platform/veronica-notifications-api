@@ -40,30 +40,6 @@ pipeline {
                 }
             }
         }
-        stage("Deploy to development") {
-            agent {  label infraAgentLabel }
-            steps {
-                script {
-                    flow.deploy('dev')
-                }
-            }
-        }
-        stage("Deploy to sandbox") {
-            agent {  label infraAgentLabel }
-            steps {
-                script {
-                    flow.deploy('sbox')
-                }
-            }
-        }
-        stage("Deploy to production") {
-            agent {  label 'core-ms-prod' }
-            steps {
-                script {
-                    flow.deploy('prod')
-                }
-            }
-        }
     }
     post {
         always {
