@@ -40,6 +40,22 @@ pipeline {
                 }
             }
         }
+        stage("Deploy to development") {
+            agent {  label infraAgentLabel }
+            steps {
+                script {
+                    flow.deploy('dev')
+                }
+            }
+        }
+        stage("Deploy to sandbox") {
+            agent {  label infraAgentLabel }
+            steps {
+                script {
+                    flow.deploy('sbox')
+                }
+            }
+        }
     }
     post {
         always {
