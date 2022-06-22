@@ -17,6 +17,7 @@ pipeline {
     }
     environment {
         TAG_NAME = "${params.TAG_NAME}"
+        JAVA_HOME = "/usr/lib/jvm/java-11-openjdk-amd64"
     }
     stages {
         stage("Preparation"){
