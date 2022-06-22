@@ -17,6 +17,7 @@ pipeline {
     }
     environment {
         TAG_NAME = "${params.TAG_NAME}"
+        JAVA_HOME = "/usr/lib/jvm/java-11-openjdk-amd64"
     }
     stages {
         stage("Preparation"){
@@ -40,11 +41,27 @@ pipeline {
                 }
             }
         }
+        stage("Deploy to development") {
+            agent {  label infraAgentLabel }
+            steps {
+                script {
+                    flow.deploy('dev')
+                }
+            }
+        }
+        stage("Deploy to sandbox") {
+            agent {  label infraAgentLabel }
+            steps {
+                script {
+                    flow.deploy('sbox')
+                }
+            }
+        }
     }
     post {
         always {
             archiveArtifacts 'target/*.jar'
-            junit '**/surefire-reports/**/*.xml'
+            //junit '**/surefire-reports/**/*.xml'
             cleanWs()
         }
     }

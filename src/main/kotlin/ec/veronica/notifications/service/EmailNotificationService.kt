@@ -10,6 +10,8 @@ import com.sendgrid.helpers.mail.objects.Email
 import com.sendgrid.helpers.mail.objects.Personalization
 import ec.veronica.notifications.dto.AttachmentDto
 import ec.veronica.notifications.dto.EmailNotificationDto
+import org.apache.commons.lang.text.StrSubstitutor
+import org.apache.commons.text.StringEscapeUtils.unescapeHtml4
 import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.stereotype.Service
@@ -26,12 +28,16 @@ class EmailNotificationService(
 
     fun sendMessage(request: EmailNotificationDto) {
         val mail = Mail()
-        mail.from = Email(noReplyEmailAddress, request.supplierName)
-        mail.subject = request.subject
-        mail.addContent(Content("text/html", request.content))
+        mail.from = Email(noReplyEmailAddress, request.name)
+        mail.subject = unescapeHtml4(replaceVariables(request.subject, request.variables))
+        mail.addContent(Content("text/html", replaceVariables(request.content, request.variables)))
         mail.addReceivers(request.tos)
         mail.addAttachments(request.attachments)
         mail.send()
+    }
+
+    private fun replaceVariables(text: String, variables: Map<String, String>): String {
+        return StrSubstitutor(variables).replace(text)
     }
 
     private fun Mail.addReceivers(receivers: List<String>) {

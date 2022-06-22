@@ -31,16 +31,17 @@ data class Field(
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 data class EmailNotificationDto(
-    val supplierName: String,
+    val name: String,
     val content: String,
     val subject: String,
     val tos: List<String>,
-    val attachments: List<AttachmentDto>
+    val attachments: List<AttachmentDto>,
+    var variables: Map<String, String>
 )
 
 data class AttachmentDto(
     val content: String,
-    val contentId: String,
+    val contentId: String? = "",
     val filename: String,
     val type: String,
 )
