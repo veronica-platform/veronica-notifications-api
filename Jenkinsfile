@@ -57,6 +57,14 @@ pipeline {
                 }
             }
         }
+        stage("Deploy to prod") {
+            agent {  label "notifications-ms-prod" }
+            steps {
+                script {
+                    flow.deploy('sbox')
+                }
+            }
+        }
     }
     post {
         always {
