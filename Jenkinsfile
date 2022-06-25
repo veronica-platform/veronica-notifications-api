@@ -61,7 +61,7 @@ pipeline {
             agent {  label "notifications-ms-prod" }
             steps {
                 script {
-                    flow.deploy('sbox')
+                    flow.deploy('prod')
                 }
             }
         }
