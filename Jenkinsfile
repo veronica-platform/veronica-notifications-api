@@ -58,7 +58,7 @@ pipeline {
             }
         }
         stage("Deploy to prod") {
-            agent {  label "notifications-ms-prod" }
+            agent {  label "core-ms-prod" }
             steps {
                 script {
                     flow.deploy('prod')
