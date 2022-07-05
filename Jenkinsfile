@@ -58,7 +58,7 @@ pipeline {
             }
         }
         stage("Deploy to prod") {
-            agent {  label "core-ms-prod" }
+            agent {  label "veronica-containers" }
             steps {
                 script {
                     flow.deploy('prod')
