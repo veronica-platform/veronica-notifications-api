@@ -1,6 +1,6 @@
 @Library("veronica-jenkins-shared-library") _
 
-def infraAgentLabel = "infra"
+def infraAgentLabel = "contabo-vps"
 
 pipeline {
     agent {  label infraAgentLabel }
