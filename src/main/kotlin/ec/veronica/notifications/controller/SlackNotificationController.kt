@@ -1,7 +1,7 @@
-package ec.veronica.notifications.web.controller
+package ec.veronica.notifications.controller
 
-import ec.veronica.notifications.dto.EmailNotificationDto
-import ec.veronica.notifications.service.EmailNotificationService
+import ec.veronica.notifications.dto.SlackNotificationDto
+import ec.veronica.notifications.service.SlackNotificationService
 import javax.validation.Valid
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -12,15 +12,15 @@ import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
-@RequestMapping("api/v1/notifications/email")
-class EmailNotificationController(
-    private val emailNotificationService: EmailNotificationService
+@RequestMapping("slack")
+class SlackNotificationController(
+    private val slackNotificationService: SlackNotificationService
 ) {
 
     @PostMapping
-    fun sendMessage(@Valid @RequestBody emailNotificationDto: EmailNotificationDto) {
+    fun sendMessage(@Valid @RequestBody slackNotificationDto: SlackNotificationDto) {
         CoroutineScope(Dispatchers.IO).launch {
-            emailNotificationService.sendMessage(emailNotificationDto)
+            slackNotificationService.sendMessage(slackNotificationDto)
         }
     }
 

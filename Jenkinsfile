@@ -10,7 +10,7 @@ pipeline {
         timeout(time: 10, unit: "MINUTES")
     }
     tools {
-        maven "MAVEN_3.8.3"
+        maven "MAVEN_3.8.6"
     }
     parameters {
         string(name:'TAG_NAME', defaultValue:'develop', description:'')
